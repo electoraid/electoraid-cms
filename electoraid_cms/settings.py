@@ -32,8 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_admin_generator',
     'elections.apps.ElectionsConfig',
-    'grappelli',
+    'baton',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
+    'baton.autodiscover',
 ]
 
 MIDDLEWARE = [
@@ -127,8 +129,66 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# GraphQL
 GRAPHENE = {
     'SCHEMA': 'schema.schema'
+}
+
+# Baton theme
+BATON = {
+    'SITE_HEADER': 'CHI.VOTE',
+    'SITE_TITLE': 'CHI.VOTE',
+    'INDEX_TITLE': 'Site administration',
+    'SUPPORT_HREF': 'https://github.com/electoraid/electoraid-cms/issues',
+    'COPYRIGHT': 'copyright © 2019 The Chicago Reporter', # noqa
+    'POWERED_BY': '<a href="https://electoraid.org">The Chicago Reporter Electoraid Project</a>',
+    'CONFIRM_UNSAVED_CHANGES': True,
+    'SHOW_MULTIPART_UPLOADING': True,
+    'ENABLE_IMAGES_PREVIEW': True,
+    'MENU': (
+        {
+            'type': 'model',
+            'app': 'elections',
+            'name': 'person',
+            'label': 'People',
+            'icon': 'fa fa-user-circle',
+        },
+        {
+            'type': 'model',
+            'app': 'elections',
+            'name': 'election',
+            'label': 'Elections',
+            'icon': 'fa fa-check-square',
+        },
+        {
+            'type': 'model',
+            'app': 'elections',
+            'name': 'politicalbody',
+            'label': 'Political bodies',
+            'icon': 'fa fa-university',
+        },
+        {
+            'type': 'app',
+            'name': 'auth',
+            'label': 'Admin',
+            'icon': 'fa fa-lock',
+            'models': (
+                {
+                    'name': 'user',
+                    'label': 'Users'
+                },
+                {
+                    'name': 'group',
+                    'label': 'Groups'
+                },
+            )
+        },
+    ),
+    # 'ANALYTICS': {
+        # 'CREDENTIALS':  'noop.json', # os.path.join(BASE_DIR, 'credentials.json'),
+        # 'VIEW_ID': '12345678',
+    # }
 }
 
 django_heroku.settings(locals())

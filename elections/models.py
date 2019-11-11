@@ -31,7 +31,7 @@ class Office(models.Model):
     name = models.CharField(max_length=4096)
     political_body = models.OneToOneField(PoliticalBody, on_delete=models.CASCADE)
     term_start = models.DateField()
-    term_end = models.DateField()
+    term_end = models.DateField(null=True, blank=True)
     
     def __str__(self):
         return '{name} - {term_start} to {term_end}'.format(**self.__dict__)
@@ -51,9 +51,6 @@ class Person(models.Model):
     nickname = models.CharField(max_length=512, null=True, blank=True)
     biography = models.TextField(null=True, blank=True)
 
-    # @TODO join through "tenure"
-    offices_held = models.ManyToManyField(Office, blank=True, \
-                                     related_name='office_holders')
     political_action_committees = models.ManyToManyField(PoliticalActionCommittee, blank=True, \
                                     related_name='people')
 
@@ -65,6 +62,17 @@ class Person(models.Model):
     
     class Meta:
         verbose_name_plural = 'People'
+
+
+class OfficeTenure(models.Model):
+    office = models.OneToOneField(Office, on_delete=models.CASCADE)
+    office_holder = models.OneToOneField(Person, null=True, blank=True, \
+                                  related_name='tenures', on_delete=models.CASCADE)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.office.__str__()
 
 
 class Candidacy(models.Model):

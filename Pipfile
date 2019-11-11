@@ -9,8 +9,8 @@ psycopg2 = "*"
 django-heroku = "*"
 gunicorn = "*"
 graphene-django = ">=2.0"
-django-grappelli = "*"
 django-admin-generator = "*"
+django-baton = "*"
 
 [dev-packages]
 
