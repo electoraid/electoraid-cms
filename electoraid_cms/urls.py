@@ -21,5 +21,6 @@ from schema import schema
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('grappelli/', include('grappelli.urls')),
     path('graphql/', GraphQLView.as_view(graphiql=True, schema=schema)),
 ]
