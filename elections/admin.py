@@ -1,8 +1,16 @@
 from django.contrib import admin
 from .models import Person, Election, Candidacy, PoliticalBody, Office, PoliticalActionCommittee
 
-# Register your models here.
-admin.site.register(Person)
+
+class CandidacyInline(admin.TabularInline):
+    model = Candidacy
+
+class PersonAdmin(admin.ModelAdmin):
+    inlines = [
+        CandidacyInline,
+    ]
+
+admin.site.register(Person, PersonAdmin)
 admin.site.register(Election)
 admin.site.register(Candidacy)
 admin.site.register(PoliticalBody)
