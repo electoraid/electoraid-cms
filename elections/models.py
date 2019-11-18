@@ -50,7 +50,7 @@ class Person(models.Model):
     last_name = models.CharField(max_length=512)
     nickname = models.CharField(max_length=512, null=True, blank=True)
     biography = models.TextField(null=True, blank=True)
-
+    candidate_id = models.IntegerField(null=True, blank=True)
     political_action_committees = models.ManyToManyField(PoliticalActionCommittee, blank=True, \
                                     related_name='people')
 
