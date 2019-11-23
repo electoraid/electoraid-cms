@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django_admin_generator',
-    'elections.apps.ElectionsConfig',
+    'electoraid.apps.ElectoraidConfig',
     'baton',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'graphene_django',
     'baton.autodiscover',
+    'reversion',
 ]
 
 MIDDLEWARE = [
@@ -130,11 +130,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# GraphQL
-GRAPHENE = {
-    'SCHEMA': 'schema.schema'
-}
-
 # Baton theme
 BATON = {
     'SITE_HEADER': 'CHI.VOTE',
@@ -149,21 +144,21 @@ BATON = {
     'MENU': (
         {
             'type': 'model',
-            'app': 'elections',
+            'app': 'electoraid',
             'name': 'person',
             'label': 'People',
             'icon': 'fa fa-user-circle',
         },
         {
             'type': 'model',
-            'app': 'elections',
+            'app': 'electoraid',
             'name': 'election',
             'label': 'Elections',
             'icon': 'fa fa-check-square',
         },
         {
             'type': 'model',
-            'app': 'elections',
+            'app': 'electoraid',
             'name': 'politicalbody',
             'label': 'Political bodies',
             'icon': 'fa fa-university',

@@ -1,5 +1,4 @@
 from django.db import models
-import graphene
 
 
 class Election(models.Model):

@@ -1,5 +1,6 @@
 # vim: set fileencoding=utf-8 :
 from django.contrib import admin
+from reversion.admin import VersionAdmin
 
 from . import models
 
@@ -47,7 +48,7 @@ class OfficeTentureInline(admin.TabularInline):
     model = models.OfficeTenure
 
 
-class PersonAdmin(admin.ModelAdmin):
+class PersonAdmin(VersionAdmin):
     list_display = ('last_name', 'first_name', 'nickname', 'tenures', 'candidacies')
     search_fields = ('last_name', 'first_name')
     inlines = [
