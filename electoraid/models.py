@@ -37,7 +37,7 @@ class Office(models.Model):
 
 
 class PoliticalActionCommittee(models.Model):
-    committee_id = models.CharField(max_length=512, primary_key=True)
+    committee_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=4096)
 
     def __str__(self):
