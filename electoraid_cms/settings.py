@@ -164,6 +164,20 @@ BATON = {
             'icon': 'fa fa-university',
         },
         {
+            'type': 'model',
+            'app': 'electoraid',
+            'name': 'office',
+            'label': 'Political offices',
+            'icon': 'fa fa-id-card',
+        },
+        {
+            'type': 'model',
+            'app': 'electoraid',
+            'name': 'politicalactioncommittee',
+            'label': 'Committees',
+            'icon': 'fa fa-hand-holding-usd',
+        },
+        {
             'type': 'app',
             'name': 'auth',
             'label': 'Admin',
