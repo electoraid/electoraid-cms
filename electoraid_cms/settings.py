@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django_admin_generator',
-    'electoraid.apps.ElectoraidConfig',
     'baton',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'baton.autodiscover',
+    'electoraid.apps.ElectoraidConfig',
+    'ilcampaigncash',
     'reversion',
+    'baton.autodiscover',
 ]
 
 MIDDLEWARE = [

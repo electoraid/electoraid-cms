@@ -12,14 +12,14 @@ class ElectionAdmin(admin.ModelAdmin):
 
 class PoliticalBodyAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'name', 'type_of_body', 'city', 'state', 'county')
+    list_display = ('name', 'type_of_body', 'city', 'state', 'county', 'id')
     list_filter = ('id', 'name', 'type_of_body', 'city', 'state', 'county')
     search_fields = ('name',)
 
 
 class OfficeAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'name', 'political_body', 'term_start', 'term_end')
+    list_display = ('name', 'political_body', 'term_start', 'term_end', 'id')
     list_filter = (
         'political_body',
         'term_start',
@@ -34,8 +34,7 @@ class OfficeAdmin(admin.ModelAdmin):
 
 
 class PoliticalActionCommitteeAdmin(admin.ModelAdmin):
-
-    list_display = ('committee_id', 'name')
+    list_display = ('name', 'committee_id')
     list_filter = ('committee_id', 'name')
     search_fields = ('name',)
 
@@ -51,6 +50,7 @@ class OfficeTentureInline(admin.TabularInline):
 class PersonAdmin(VersionAdmin):
     list_display = ('last_name', 'first_name', 'nickname', 'tenures', 'candidacies')
     search_fields = ('last_name', 'first_name')
+    autocomplete_fields = ['political_action_committees']
     inlines = [
         CandidacyInline,
         OfficeTentureInline,

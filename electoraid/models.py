@@ -11,6 +11,9 @@ class Election(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        db_table = 'election'
+
 
 class PoliticalBody(models.Model):
     name = models.CharField(max_length=4096)
@@ -23,6 +26,7 @@ class PoliticalBody(models.Model):
         return self.name
 
     class Meta:
+        db_table = 'political_body'
         verbose_name_plural = 'Political bodies'
 
 
@@ -35,6 +39,9 @@ class Office(models.Model):
     def __str__(self):
         return '{name} - {term_start} to {term_end}'.format(**self.__dict__)
 
+    class Meta:
+        db_table = 'office'
+
 
 class PoliticalActionCommittee(models.Model):
     committee_id = models.IntegerField(primary_key=True)
@@ -42,6 +49,9 @@ class PoliticalActionCommittee(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        db_table = 'committee'
 
 
 class Person(models.Model):
@@ -60,6 +70,7 @@ class Person(models.Model):
             return '{first_name} {last_name}'.format(**self.__dict__)
     
     class Meta:
+        db_table = 'person'
         verbose_name_plural = 'People'
 
 
@@ -72,6 +83,9 @@ class OfficeTenure(models.Model):
 
     def __str__(self):
         return self.office.__str__()
+    
+    class Meta:
+        db_table = 'office_tenure'
 
 
 class Candidacy(models.Model):
@@ -86,5 +100,6 @@ class Candidacy(models.Model):
         return '{candidate} - {office} - {election}'.format(office=self.office, candidate=self.candidate, election=self.election)
     
     class Meta:
+        db_table = 'candidacy'
         verbose_name_plural = 'Candidacies'
 
