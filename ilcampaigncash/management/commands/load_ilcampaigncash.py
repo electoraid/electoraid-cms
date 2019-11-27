@@ -1,7 +1,7 @@
 import requests
 from django.core.management.base import BaseCommand, CommandError
 from django.db.utils import IntegrityError
-from electoraid.models import PoliticalActionCommittee, Person
+from electoraid.models import Committee, Person
 
 ILCAMPAIGNCASHURL = 'https://il-campaign-finance-api.herokuapp.com/v1/graphql'
 
@@ -52,7 +52,7 @@ class Command(BaseCommand):
         data = self.run_query(COMMITTEEQUERY)
         for committee in data.get('committees'):
             committee['committee_id'] = committee.pop('id')
-            db_committee, created = PoliticalActionCommittee.objects.get_or_create(**committee)
+            db_committee, created = Committee.objects.get_or_create(**committee)
             if created:
                 self.stdout.write('created {name} ({committee_id})'.format(**committee))
             else:
