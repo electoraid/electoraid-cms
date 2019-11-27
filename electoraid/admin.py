@@ -33,7 +33,7 @@ class OfficeAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
-class PoliticalActionCommitteeAdmin(admin.ModelAdmin):
+class CommitteeAdmin(admin.ModelAdmin):
     list_display = ('name', 'committee_id')
     list_filter = ('committee_id', 'name')
     search_fields = ('name',)
@@ -50,7 +50,7 @@ class OfficeTentureInline(admin.TabularInline):
 class PersonAdmin(VersionAdmin):
     list_display = ('last_name', 'first_name', 'nickname', 'tenures', 'candidacies')
     search_fields = ('last_name', 'first_name')
-    autocomplete_fields = ['political_action_committees']
+    autocomplete_fields = ['committees']
     inlines = [
         CandidacyInline,
         OfficeTentureInline,
@@ -110,7 +110,7 @@ def _register(model, admin_class):
 _register(models.Election, ElectionAdmin)
 _register(models.PoliticalBody, PoliticalBodyAdmin)
 _register(models.Office, OfficeAdmin)
-_register(models.PoliticalActionCommittee, PoliticalActionCommitteeAdmin)
+_register(models.Committee, CommitteeAdmin)
 _register(models.Person, PersonAdmin)
 _register(models.OfficeTenure, OfficeTenureAdmin)
 _register(models.Candidacy, CandidacyAdmin)
