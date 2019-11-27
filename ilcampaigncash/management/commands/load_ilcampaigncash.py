@@ -40,23 +40,23 @@ class Command(BaseCommand):
 
     def load_people(self):
         data = self.run_query(PERSONQUERY)
-        for candidate in data.get('candidates'):
+        for candidate in data.get('candidates', []):
             candidate['candidate_id'] = candidate.pop('id')
             person, created = Person.objects.get_or_create(**candidate)
             if created:
                 self.stdout.write('created {first_name} {last_name} ({candidate_id})'.format(**candidate))
             else:
-                self.stdout.write('skipped {first_name} {last_name} ({candidate_id})'.format(**candidate)) 
+                self.stdout.write('updated {first_name} {last_name} ({candidate_id})'.format(**candidate)) 
         
     def load_committees(self):
         data = self.run_query(COMMITTEEQUERY)
-        for committee in data.get('committees'):
+        for committee in data.get('committees', []):
             committee['committee_id'] = committee.pop('id')
             db_committee, created = Committee.objects.get_or_create(**committee)
             if created:
                 self.stdout.write('created {name} ({committee_id})'.format(**committee))
             else:
-                self.stdout.write('skipped {name} ({committee_id})'.format(**committee)) 
+                self.stdout.write('updated {name} ({committee_id})'.format(**committee)) 
 
     def handle(self, *args, **options):
         self.stdout.write('--- loading committees ---\n')    
