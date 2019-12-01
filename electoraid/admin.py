@@ -11,22 +11,17 @@ class ElectionAdmin(admin.ModelAdmin):
 
 
 class PoliticalBodyAdmin(admin.ModelAdmin):
-
     list_display = ('name', 'type_of_body', 'city', 'state', 'county', 'id')
     list_filter = ('id', 'name', 'type_of_body', 'city', 'state', 'county')
     search_fields = ('name',)
 
 
 class OfficeAdmin(admin.ModelAdmin):
-
+    save_as = True
     list_display = ('name', 'political_body', 'term_start', 'term_end', 'id')
     list_filter = (
         'political_body',
-        'term_start',
-        'term_end',
-        'id',
         'name',
-        'political_body',
         'term_start',
         'term_end',
     )
