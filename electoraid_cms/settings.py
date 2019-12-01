@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'electoraid.apps.ElectoraidConfig',
-    'ilcampaigncash',
+    'electoraid',
+    'electoraid_loaders',
     'reversion',
     'baton.autodiscover',
 ]
