@@ -19,6 +19,7 @@ class PoliticalBodyAdmin(admin.ModelAdmin):
 class OfficeAdmin(admin.ModelAdmin):
     save_as = True
     list_display = ('name', 'political_body', 'term_start', 'term_end', 'id')
+    readonly_fields = ('slug',)
     list_filter = (
         'political_body',
         'name',
@@ -32,6 +33,7 @@ class CommitteeAdmin(admin.ModelAdmin):
     list_display = ('name', 'committee_id')
     list_filter = ('committee_id', 'name')
     search_fields = ('name',)
+    readonly_fields = ('slug',)
 
 
 class CandidacyInline(admin.TabularInline):

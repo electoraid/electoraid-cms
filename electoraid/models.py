@@ -1,7 +1,9 @@
 from django.db import models
+from autoslug import AutoSlugField
 
 
 class Election(models.Model):
+    slug = models.SlugField(null=True)
     name = models.CharField(max_length=4096)
     date = models.DateField()
     city = models.CharField(max_length=512)
@@ -16,6 +18,7 @@ class Election(models.Model):
 
 
 class PoliticalBody(models.Model):
+    slug = models.SlugField(null=True)
     name = models.CharField(max_length=4096)
     type_of_body = models.CharField(max_length=512)
     city = models.CharField(max_length=512)
@@ -31,6 +34,7 @@ class PoliticalBody(models.Model):
 
 
 class Office(models.Model):
+    slug = models.SlugField(null=True)
     name = models.CharField(max_length=4096)
     political_body = models.ForeignKey(PoliticalBody, on_delete=models.CASCADE)
     term_start = models.DateField()
@@ -42,6 +46,7 @@ class Office(models.Model):
 
 
 class Committee(models.Model):
+    slug = models.SlugField(null=True)
     committee_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=4096)
 
@@ -51,6 +56,7 @@ class Committee(models.Model):
 
 
 class Person(models.Model):
+    slug = models.SlugField(null=True)
     first_name = models.CharField(max_length=512)
     last_name = models.CharField(max_length=512)
     nickname = models.CharField(max_length=512, null=True, blank=True)
