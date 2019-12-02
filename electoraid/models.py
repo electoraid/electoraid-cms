@@ -1,5 +1,4 @@
 from django.db import models
-from autoslug import AutoSlugField
 
 
 class Election(models.Model):
