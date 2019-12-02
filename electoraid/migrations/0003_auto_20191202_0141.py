@@ -20,17 +20,17 @@ class Migration(migrations.Migration):
             name='slug',
             field=models.SlugField(null=True),
         ),
-        migrations.AlterField(
+        migrations.AddField(
             model_name='election',
             name='slug',
             field=models.SlugField(null=True),
         ),
-        migrations.AlterField(
+        migrations.AddField(
             model_name='office',
             name='slug',
             field=models.SlugField(null=True),
         ),
-        migrations.AlterField(
+        migrations.AddField(
             model_name='politicalbody',
             name='slug',
             field=models.SlugField(null=True),
