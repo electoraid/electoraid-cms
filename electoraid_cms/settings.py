@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'electoraid',
+    'autoslug',
     'electoraid_loaders',
     'reversion',
     'baton.autodiscover',
