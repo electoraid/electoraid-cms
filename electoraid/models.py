@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.postgres.fields import ArrayField
 
 class Election(models.Model):
     slug = models.SlugField(null=True)
@@ -63,6 +63,7 @@ class Person(models.Model):
     candidate_id = models.IntegerField(null=True, blank=True)
     committees = models.ManyToManyField(Committee, blank=True, \
                                     related_name='people')
+    openstates_id = models.CharField(max_length=64, null=True, blank=True)
 
     def __str__(self):
         if self.nickname:

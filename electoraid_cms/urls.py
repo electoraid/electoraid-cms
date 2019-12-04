@@ -15,10 +15,12 @@ Including another URLconf
 """
 from baton.autodiscover import admin
 from django.urls import include, path
+from django.views.generic.base import RedirectView
 from django.views.decorators.csrf import csrf_exempt
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('baton/', include('baton.urls')),
+    path('', RedirectView.as_view(url='/admin')),
 ]

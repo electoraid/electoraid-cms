@@ -13,6 +13,7 @@ django-admin-generator = "*"
 django-baton = "*"
 django-reversion = "*"
 requests = "*"
+jsonstore = "*"
 
 [dev-packages]
 ipdb = "*"
